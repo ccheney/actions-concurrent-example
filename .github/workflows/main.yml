@@ -12,12 +12,19 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.2.0'
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
       - name: install dependencies
         run: yarn --frozen-lockfile
-      - uses: actions/upload-artifact@v2
-        with:
-          name: node-modules
-          path: node_modules
+      - name: Get yarn cache directory path
   build:
     name: build artifact
     runs-on: ubuntu-latest
@@ -25,9 +32,6 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
-    - uses: actions/download-artifact@v2
-      with:
-        name: node-modules
     - name: build
       run: yarn build
   job1:
@@ -37,8 +41,5 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
-    - uses: actions/download-artifact@v2
-      with:
-        name: node-modules
     - name: job1
       run: yarn job1
