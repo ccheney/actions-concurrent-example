@@ -1,0 +1,22 @@
+{
+  "name": "actions-concurrent-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ccheney/actions-concurrent-example.git",
+  "author": "Chris Cheney <ccheney@letspersuade.com>",
+  "license": "MIT",
+  "scripts": {
+    "job1": "true",
+    "job2": "true",
+    "job3": "true",
+    "job4": "true",
+    "job5": "true",
+    "job6": "true",
+    "job7": "true",
+    "job8": "true",
+    "build": "touch artifact"
+  },
+  "dependencies": {
+    "left-pad": "^1.3.0"
+  }
+}

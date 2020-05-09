@@ -1,0 +1,28 @@
+name: actions concurrency & yarn caching
+on: [pull_request]
+
+jobs:
+  setup:
+    name: setup ci env
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: setup nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.2.0'
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+  build:
+    name: build artifact
+    runs-on: ubuntu-latest
+    steps:
+    - name: build
+      run: yarn build
+  job1:
+    name: job1
+    runs-on: ubuntu-latest
+    steps:
+    - name: job1
+      run: yarn job1
