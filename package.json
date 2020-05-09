@@ -14,6 +14,7 @@
     "job6": "true",
     "job7": "true",
     "job8": "true",
+    "job9": "false",
     "build": "touch artifact"
   },
   "dependencies": {
