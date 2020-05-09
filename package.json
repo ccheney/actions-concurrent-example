@@ -14,7 +14,7 @@
     "job6": "true",
     "job7": "true",
     "job8": "true",
-    "job9": "false",
+    "job9": "node ./index.js",
     "build": "touch artifact"
   },
   "dependencies": {
