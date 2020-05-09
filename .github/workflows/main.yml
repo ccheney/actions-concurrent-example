@@ -17,6 +17,7 @@ jobs:
       - name: set yarn cache dir
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - name: yarn cache
       - uses: actions/cache@v1
         id: yarn-cache
@@ -37,7 +38,6 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
-
     - name: build
       run: yarn build
 
@@ -48,7 +48,6 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
-
     - name: job1
       run: yarn job1
 
@@ -59,6 +58,5 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
-
     - name: job9
       run: yarn job9
