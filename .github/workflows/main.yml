@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
     - uses: actions/download-artifact@v2
       with:
         name: node-modules
@@ -33,6 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
     - uses: actions/download-artifact@v2
       with:
         name: node-modules
